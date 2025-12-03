@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mahasiswa - Red/Black Edition</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1 fw-bold">
+                <i class="fa-solid fa-shield-halved text-danger me-2"></i>MAHASISWA<span class="text-danger">MANAGER</span>
+            </span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <div class="card-header">
+                        <h5 class="m-0"><i class="fa-solid fa-user-plus me-2"></i>Tambah Data</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formTambah">
+                            <div class="mb-3">
+                                <label for="nama" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" placeholder="Contoh: Budi Santoso" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nim" class="form-label">NIM</label>
+                                <input type="number" class="form-control" id="nim" placeholder="Contoh: 12345678" required>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100 fw-bold">
+                                <i class="fa-solid fa-floppy-disk me-2"></i>SIMPAN DATA
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="m-0"><i class="fa-solid fa-list me-2"></i>Daftar Mahasiswa</h5>
+                        <button class="btn btn-sm btn-outline-light" onclick="loadData()">
+                            <i class="fa-solid fa-rotate-right"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover mb-0 align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>NIM</th>
+                                        <th class="text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabelData">
+                                    </tbody>
+                            </table>
+                        </div>
+                        <div id="loading" class="text-center p-3 d-none">
+                            <div class="spinner-border text-danger" role="status"></div>
+                            <p class="text-muted mt-2">Memuat data...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Mahasiswa</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEdit">
+                        <input type="hidden" id="editId">
+                        <div class="mb-3">
+                            <label for="editNama" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="editNama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNim" class="form-label">NIM</label>
+                            <input type="number" class="form-control" id="editNim" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100">Update Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
